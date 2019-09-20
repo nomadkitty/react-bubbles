@@ -7,7 +7,7 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, handleUpdate }) => {
-  console.log(colors);
+  // console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
   const [adding, setAdding] = useState(false);
@@ -55,7 +55,9 @@ const ColorList = ({ colors, handleUpdate }) => {
       .then(res => {
         console.log(res)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+      setAddColor(initialColor);
+      setAdding(false);
   }
 
   return (
@@ -136,6 +138,7 @@ const ColorList = ({ colors, handleUpdate }) => {
               </label>
               <div className="button-row">
                 <button type="submit">Add</button>
+                <button onClick={() => setAdding(false)}>cancel</button>
               </div>
             </form>
         )}
